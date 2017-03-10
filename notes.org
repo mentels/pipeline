@@ -1,0 +1,6 @@
+* on reading files as streams line by line 
+http://stackoverflow.com/questions/27781482/elixir-can-i-use-stream-resource-to-progressively-read-a-large-data-file
+* TODOs
+ - [ ] Measurements
+ - [ ] Optimisations (https://hexdocs.pm/flow/Flow.html#module-performance-discussions)
+ - [ ] Infinite streams
