@@ -1,5 +1,5 @@
-defmodule  Pipeline.WithFlow do
-  @textfile Application.get_env(:pipeline, :file)
+defmodule  WordCounting.WithFlow do
+  @textfile Application.get_env(:word_counting, :file)
 
   def count_words() do
     @textfile

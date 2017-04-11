@@ -1,4 +1,6 @@
 use Mix.Config
 
-config :pipeline,
-  file: "priv/words.txt"
+config :word_counting,
+  file:  "apps/word_counting/priv/words.txt"
+
+

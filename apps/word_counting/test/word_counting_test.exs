@@ -1,4 +1,4 @@
-defmodule PipelineTest do
+defmodule WordCountingTest do
   use ExUnit.Case
   doctest Pipeline
 

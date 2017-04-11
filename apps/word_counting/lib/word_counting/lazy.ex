@@ -1,5 +1,5 @@
-defmodule Pipeline.Lazy do
-  @textfile Application.get_env(:pipeline, :file)
+defmodule WordCounting.Lazy do
+  @textfile Application.get_env(:word_counting, :file)
 
   def count_words() do
     File.stream!(@textfile)             # read the file line by line

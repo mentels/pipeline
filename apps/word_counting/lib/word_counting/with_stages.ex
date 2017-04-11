@@ -1,5 +1,5 @@
-defmodule Pipeline.WithStages do
-  @textfile Application.get_env(:pipeline, :file)
+defmodule WordCounting.WithStages do
+  @textfile Application.get_env(:word_counting, :file)
   @producers_consumers_cnt 2
 
   def count_words() do
@@ -28,7 +28,7 @@ defmodule Pipeline.WithStages do
   end
 
   defp consumer(producers) do
-   {:ok, pid} = Pipeline.ConsumerStage.start_link(producers) 
+   {:ok, pid} = Pipeline.ConsumerStage.start_link(producers)
    pid
   end
 
