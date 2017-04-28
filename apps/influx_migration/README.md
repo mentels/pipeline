@@ -1,19 +1,23 @@
 # InfluxMigration
 
-**TODO: Add description**
+## Get the input Influx running
 
-## Installation
+```bash
+# start influx containers containers
+docker-compose up
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `influx_migration` to your list of dependencies in `mix.exs`:
+# import data
+docker cp tide_log.tar.gz influxmigration_influx_in_1:/root
+docker exec influxmigration_influx_in_1 tar -xvvzf  /root/tide_log.tar.gz
+docker exec influxmigration_influx_in_1 influxd restore -metadir /var/lib/influxdb/meta tide_log_backup
+docker exec influxmigration_influx_in_1 influxd restore -datadir /var/lib/influxdb/data -database tide_log tide_log_backup
 
-```elixir
-def deps do
-  [{:influx_migration, "~> 0.1.0"}]
-end
+# restart containers
+docker-compose restart
+
+# see if the metrics are there
+curl -G 'http://localhost:8086/query?pretty=true' --data-urlencode "db=tide_log" --data-urlencode "q=SHOW MEASUREMENTS"
+
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/influx_migration](https://hexdocs.pm/influx_migration).
 

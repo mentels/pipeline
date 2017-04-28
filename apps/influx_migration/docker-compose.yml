@@ -1,19 +1,16 @@
 version: '2'
-volumes: 
-  influx_data_in:
-  influx_data_out:
 services:
   influx_in:
-    image: 'influxdb'
+    image: influxdb
     ports:
-      - "8086:8086"
-      - "8083:8083" 
+      - 8086:8086
+      - 8083:8083
     volumes:
-      - "influx_data_in:/var/lib/influxdb"
+      - ./influx_data_in:/var/lib/influxdb
   influx_out:
-    image: 'influxdb'
+    image: influxdb
     ports:
-      - "8087:8086"
-      - "8084:8083" 
+      - 8087:8086
+      - 8084:8083
     volumes:
-      - "influx_data_out:/var/lib/influxdb"
+      - ./influx_data_out:/var/lib/influxdb
