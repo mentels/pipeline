@@ -4,7 +4,7 @@ defmodule  WordCounting.WithFlow do
   def count_words() do
     @textfile
     |> File.stream!()
-    |> Flow.from_enumerable()
+    |> Flow.from_enumerable(max_demand: 1)
     |> Flow.flat_map(&String.split &1)
     |> Flow.partition()
     |> Flow.reduce(fn -> %{} end, fn word, map ->
