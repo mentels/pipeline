@@ -4,7 +4,7 @@ defmodule WordCounting.Mixfile do
   def project do
     [app: :word_counting,
      version: "0.1.0",
-     elixir: "~> 1.4",
+     elixir: "~> 1.7",
      deps_path: "../../deps/",
      build_path: "../../_build",
      config_path: "../../config/config.exs",
@@ -19,7 +19,7 @@ defmodule WordCounting.Mixfile do
   end
 
   defp deps do
-    [{:gen_stage, "~> 0.11"},
-     {:flow, "~> 0.11"}]
+    [{:gen_stage, "~> 0.14"},
+     {:flow, "~> 0.14"}]
   end
 end

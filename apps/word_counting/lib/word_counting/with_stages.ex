@@ -1,4 +1,5 @@
 defmodule WordCounting.WithStages do
+  ## TODO: make this infinie and experiment with demand
   @textfile Application.get_env(:word_counting, :file)
   @producers_consumers_cnt 2
 
@@ -79,7 +80,7 @@ defmodule Pipeline.ProducerStage do
   def init(file), do: {:producer, stream(file)}
 
   def handle_demand(demand, stream) do
-    events = read_lines(stream, demand) 
+    events = read_lines(stream, demand)
     {:noreply, events, stream}
   end
 
@@ -87,7 +88,7 @@ defmodule Pipeline.ProducerStage do
 
   defp stream(file), do: File.open!(file) |> IO.stream(:line)
 
-  defp read_lines(stream, num), do: Enum.take(stream, num) 
+  defp read_lines(stream, num), do: Enum.take(stream, num)
 end
 
 defmodule Pipeline.ConsumerProducerStage do
@@ -105,7 +106,7 @@ defmodule Pipeline.ConsumerProducerStage do
   end
 
   def handle_events(events, _from, state) do
-    IO.puts "(#{inspect self()}) Handling events: #{inspect events}" 
+    IO.puts "(#{inspect self()}) Handling events: #{inspect events}"
     event =
       events
       |> Enum.flat_map(&String.split/1)
@@ -115,5 +116,3 @@ defmodule Pipeline.ConsumerProducerStage do
   end
 
 end
-
-
